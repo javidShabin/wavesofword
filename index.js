@@ -1,11 +1,16 @@
 const express = require("express");
 const app = express();
+const bookRoute = require('./routes/booksRoute')
+const autherRoute = require('./routes/autherRoute')
 const mongoose = require("mongoose");
 const cors = require('cors')
 const port = 5000;
 
 app.use(cors())
 app.use(express.json())
+
+app.use('/books', bookRoute)
+app.use('/books', autherRoute)
 
 // Connect Database
 async function main() {
