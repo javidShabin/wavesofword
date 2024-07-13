@@ -10,7 +10,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/books', bookRoute)
-app.use('/books', autherRoute)
+app.use('/authers', autherRoute)
 
 // Connect Database
 async function main() {
