@@ -1,4 +1,4 @@
-
+const Book = require('../models/bookModel')
 
 // Get all books
 const getAllBooks = async (req, res) => {
@@ -10,7 +10,10 @@ const getBookById = async (req, res) => {
 }
 // Add books
 const addBook = async (req, res) => {
-    res.send("Ok Get all books")
+    const bookData = req.body;
+    const book = new Book(bookData)
+    await book.save()
+    res.json(book)
 }
 //Update book
 const updateBook = async (req, res) => {
@@ -28,3 +31,11 @@ module.exports = {
     updateBook,
     DeleteBook
 }
+
+// const addGenre = async (req, res) => {
+//     const genreData = req.body;
+//     const genre = new Genre(genreData)
+//     await genre.save()
+//     res.json(genre)
+//     res.send("add Genre")
+// }
