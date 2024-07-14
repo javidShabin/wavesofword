@@ -11,8 +11,6 @@ const getBookId = async (req, res) => {
     res.json(book)
 }
 
-// const genre = await Genre.findById(req.params.genreId).exec()
-//     res.json(genre)
 // Add books
 const addBook = async (req, res) => {
     const bookData = req.body;
