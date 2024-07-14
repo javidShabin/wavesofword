@@ -19,11 +19,14 @@ const addAuther = async (req, res) => {
 }
 //Update Auther
 const updateAuther = async (req, res) => {
-    res.send("Ok Get all Authers")
+    const editedAuther = await Auther.
+    findByIdAndUpdate(req.params.autherId, req.body, {new: true})
+    res.json(editedAuther)
 }
 // Delete Auther
 const DeleteAuther = async (req, res) => {
-    res.send("Ok Get all Authers")
+    await Auther.findByIdAndDelete(req.params.autherId)
+    res.send("Deleted the auther")
 }
 
 module.exports = {
