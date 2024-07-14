@@ -20,11 +20,14 @@ const addBook = async (req, res) => {
 }
 //Update book
 const updateBook = async (req, res) => {
-    res.send("Ok Get all books")
+    const editedBook = await Book.
+    findByIdAndUpdate(req.params.bookId, req.body, {new: true})
+    res.json(editedBook)
 }
 // Delete book
 const DeleteBook = async (req, res) => {
-    res.send("Ok Get all books")
+    await Book.findByIdAndDelete(req.params.bookId)
+    res.send("Delete the books")
 }
 
 module.exports = {
@@ -34,11 +37,3 @@ module.exports = {
     updateBook,
     DeleteBook
 }
-
-// const addGenre = async (req, res) => {
-//     const genreData = req.body;
-//     const genre = new Genre(genreData)
-//     await genre.save()
-//     res.json(genre)
-//     res.send("add Genre")
-// }
