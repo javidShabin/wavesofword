@@ -2,12 +2,17 @@ const Book = require('../models/bookModel')
 
 // Get all books
 const getAllBooks = async (req, res) => {
-    res.send("Ok Get all books")
+    const book = await Book.find({})
+    res.json(book)
 }
 // Get book by Id
-const getBookById = async (req, res) => {
-    res.send("Ok Get all books")
+const getBookId = async (req, res) => {
+    const book = await Book.findById(req.params.bookId).exec()
+    res.json(book)
 }
+
+// const genre = await Genre.findById(req.params.genreId).exec()
+//     res.json(genre)
 // Add books
 const addBook = async (req, res) => {
     const bookData = req.body;
@@ -26,7 +31,7 @@ const DeleteBook = async (req, res) => {
 
 module.exports = {
     getAllBooks,
-    getBookById,
+    getBookId,
     addBook,
     updateBook,
     DeleteBook
