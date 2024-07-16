@@ -12,9 +12,9 @@ const getAutherById = async (req, res) => {
 }
 // Add Authers
 const addAuther = async (req, res) => {
-    const autherData = req.body
+    const autherData = req.body;
     const auther = new Auther(autherData)
-    await Auther.save()
+    await auther.save()
     res.json(auther)
 }
 //Update Auther

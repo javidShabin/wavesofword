@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const autherSchema = new mongoose.Schema({
-    autherName: String,
-    dateOfBirth: Date,
-    place: String
+    authName: String,
+    birthYear: Number,
+    place: String,
+    description: String
 })
 
 const Auther = mongoose.model('auther', autherSchema)
