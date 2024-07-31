@@ -3,6 +3,7 @@ const app = express();
 const bookRoute = require('./routes/booksRoute')
 const autherRoute = require('./routes/autherRoute')
 const userRoute = require('./routes/userRoute')
+const authRoute = require('./routes/authRoute')
 const mongoose = require("mongoose");
 const cors = require('cors')
 const port = 5000;
@@ -14,6 +15,7 @@ app.use(express.json())
 app.use('/books', bookRoute)
 app.use('/authers', autherRoute)
 app.use('/useres', userRoute)
+app.use('/login', authRoute)
 
 // Connect Database
 async function main() {
