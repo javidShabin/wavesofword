@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const app = express();
 const bookRoute = require('./routes/booksRoute')
@@ -15,7 +16,7 @@ app.use(express.json())
 app.use('/books', bookRoute)
 app.use('/authers', autherRoute)
 app.use('/useres', userRoute)
-app.use('/login', authRoute)
+app.use('/auth', authRoute)
 
 // Connect Database
 async function main() {
