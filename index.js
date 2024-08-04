@@ -1,4 +1,5 @@
 require('dotenv').config()
+const cookieParser = require('cookie-parser')
 const express = require("express");
 const app = express();
 const bookRoute = require('./routes/booksRoute')
@@ -12,6 +13,7 @@ const port = 5000;
 // Middle wares
 app.use(cors())
 app.use(express.json())
+app.use(cookieParser())
 
 app.use('/books', bookRoute)
 app.use('/authers', autherRoute)
