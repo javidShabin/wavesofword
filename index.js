@@ -28,7 +28,7 @@ app.use("/auth", authRoute);
 // Connect Database
 async function main() {
   await mongoose.connect(
-    "mongodb+srv://javidprsnlact:t41sHOj6MIhD7umG@cluster0.ujfj8le.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    process.env.MONGO_CONNECTION_STRING
   );
 }
 main()
