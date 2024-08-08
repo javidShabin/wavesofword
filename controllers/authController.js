@@ -22,7 +22,7 @@ const login = async (req, res) => {
       maxAge: 1 * 60 * 60 * 1000,
     });
 
-    res.send("Logged in");
+    res.json({_id: user._id, name: user.name, email: user.email})
   } else {
     res.status(401).send("Not user found");
   }

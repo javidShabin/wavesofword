@@ -1,30 +1,39 @@
-require('dotenv').config()
-const cookieParser = require('cookie-parser')
+require("dotenv").config();
+const cookieParser = require("cookie-parser");
 const express = require("express");
 const app = express();
-const bookRoute = require('./routes/booksRoute')
-const autherRoute = require('./routes/autherRoute')
-const userRoute = require('./routes/userRoute')
-const authRoute = require('./routes/authRoute')
+const bookRoute = require("./routes/booksRoute");
+const autherRoute = require("./routes/autherRoute");
+const userRoute = require("./routes/userRoute");
+const authRoute = require("./routes/authRoute");
 const mongoose = require("mongoose");
-const cors = require('cors')
+const cors = require("cors");
 const port = 5000;
 
 // Middle wares
-app.use(cors())
-app.use(express.json())
-app.use(cookieParser())
+app.use(
+  cors({
+    credentials: true,
+    origin: true,
+  })
+);
+app.use(express.json());
+app.use(cookieParser());
 
-app.use('/books', bookRoute)
-app.use('/authers', autherRoute)
-app.use('/useres', userRoute)
-app.use('/auth', authRoute)
+app.use("/books", bookRoute);
+app.use("/authers", autherRoute);
+app.use("/useres", userRoute);
+app.use("/auth", authRoute);
 
 // Connect Database
 async function main() {
-  await mongoose.connect("mongodb+srv://javidprsnlact:t41sHOj6MIhD7umG@cluster0.ujfj8le.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+  await mongoose.connect(
+    "mongodb+srv://javidprsnlact:t41sHOj6MIhD7umG@cluster0.ujfj8le.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  );
 }
-main().then(() => console.log("Connected")).catch((err) => console.log(err));
+main()
+  .then(() => console.log("Connected"))
+  .catch((err) => console.log(err));
 
 // Create server
 app.listen(port, () => {
